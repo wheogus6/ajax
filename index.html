@@ -7,11 +7,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 
   </script>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  
 </body>
 </html>
   <script src="colors.js"></script>
   <script>
+    var checkLoginStatus = function(response){
+      if(response.status === 'connected'){
+        document.querySelector("#authbtn").value='Logout';
+      }else{document.querySelector("#authbtn").value = 'Login';}
+    }
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1411614899270161',
@@ -19,15 +24,16 @@
       xfbml      : true,                     
       version    : 'v14.0'           
     });
-    var callback = function(response){
-      if(response.status === 'connected'){
-        document.querySelector("#authbtn").value='Logout';
-      }else{document.querySelector("#authbtn").value = 'Login';}
-    }
-    FB.getLoginStatus(callback);   
-             
     
+    FB.getLoginStatus(callback);  
   };
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
   </script>
 </head>
 <body>
