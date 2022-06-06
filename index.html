@@ -12,11 +12,11 @@
 </html>
   <script src="colors.js"></script>
   <script>
-    var checkLoginStatus = function(response){
+   var checkLoginStatus = function(response){
       if(response.status === 'connected'){
         document.querySelector("#authbtn").value='Logout';
       }else{document.querySelector("#authbtn").value = 'Login';}
-    }
+    } 
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1411614899270161',
@@ -25,7 +25,7 @@
       version    : 'v14.0'           
     });
     
-    FB.getLoginStatus(callback);  
+    FB.getLoginStatus(checkLoginStatus);  
   };
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
@@ -40,11 +40,11 @@
   <input type="button" id="authbtn" value="checking..." onclick="
   if(this.value === 'Login'){
     FB.login(function(response){
-    
+    checkLoginStatus(response);
     });
   }else{
     FB.logout(function(response){
-     
+      checkLoginStatus(response);
     });
   }
   ">
