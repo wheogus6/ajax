@@ -7,6 +7,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 
   </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+</body>
+</html>
   <script src="colors.js"></script>
   <script>
   window.fbAsyncInit = function() {
@@ -31,11 +34,11 @@
   <input type="button" id="authbtn" value="checking..." onclick="
   if(this.value === 'Login'){
     FB.login(function(response){
-      console.log('login =>',res);
+    
     });
   }else{
     FB.logout(function(response){
-      console.log('logout =>',res);
+     
     });
   }
   ">
